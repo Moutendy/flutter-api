@@ -45,17 +45,18 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: typeApplianceService.fetchAlbum() == null
-          ? const Center(
-              child: CircularProgressIndicator(),
-            ): Center(
+      body: Center(
         child:FutureBuilder(
               future: typeApplianceService.fetchAlbum(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+
+        
+          for(int i=0;i<snapshot.data!.length+1;i++)
+          {
+return Text(snapshot.data![i+1].libelle);
+          }
                   
-                  print(snapshot.data);
-                  return Text(snapshot.data!.length.toString());
                 } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
                 }
