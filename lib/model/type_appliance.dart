@@ -1,16 +1,16 @@
 class typeAappliance{
-  final int id;
-  final String libelle;
-  
+
+  String libelle;
+ late String id;
    typeAappliance({
-    required this.id,
+   required this.id,
     required this.libelle,
   });
 
-  factory typeAappliance.fromJson(var json) {
+  factory typeAappliance.fromJson(Map<String, dynamic> json) {
     return typeAappliance(
-      id: json['id'],
-      libelle: json['libelle'],
+      id:json['id'].toString(),
+      libelle: json['libelle'].toString(),
     );
   }
 }
