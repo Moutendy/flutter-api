@@ -53,6 +53,7 @@ Widget champ()
   padding: const EdgeInsets.all(32),
     child: TextField(
           controller: _typeNameController,
+           // ignore: prefer_const_constructors
            decoration: InputDecoration.collapsed(
                   hintText: "Type appliance",
                 ),
@@ -74,6 +75,7 @@ return champs;
    typeappliance=new typeAappliance(id: '', libelle: _typeNameController.text);
    
  TypeApplianceService.addType(typeappliance);
+  TypeApplianceService.getAppliance();
  
   }
 

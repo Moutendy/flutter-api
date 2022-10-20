@@ -66,7 +66,7 @@ final response = await http.get(Uri.parse('http://127.0.0.1:8000/api/typeapplian
 
   static deleteTypeappliance(String typeApplianceId) async
   {var string ="http://127.0.0.1:8000/api/typeappliance/";
-   final   parsed=json.decode(typeApplianceId);
+   final   parsed=json.decode(typeApplianceId).toString();
         try {
          
       print(parsed);
@@ -75,6 +75,25 @@ final response = await http.get(Uri.parse('http://127.0.0.1:8000/api/typeapplian
       print('deleteEmployee Response: ${response.body}');
       if (200 == response.statusCode) {
         print(response.body);
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
+
+    static Future<bool> updateType(typeAappliance typeAppliance) async {
+      var string ="http://127.0.0.1:8000/api/typeappliance/";
+    try {
+      var map = Map<String, dynamic>();
+      map['libelle']=typeAppliance.libelle;
+  
+      final response = await http.put(Uri.parse(string + typeAppliance.id.toString()), body: map);
+      print('updateEmployee Response: ${response.body}');
+      if (200 == response.statusCode) {
         return true;
       } else {
         return false;

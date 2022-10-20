@@ -1,6 +1,7 @@
 import 'package:applianceflutter/model/type_appliance.dart';
 import 'package:applianceflutter/service/type_appliance_service.dart';
 import 'package:applianceflutter/vue/add_type.dart';
+import 'package:applianceflutter/vue/update.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -88,8 +89,16 @@ Navigator.push(context, PageRouteBuilder(pageBuilder: ((context, animation, seco
   }
 
 
+  // ignore: avoid_types_as_parameter_names
+  _homeupdate(typeAappliance type)
+  {
+  print(type.libelle.toString());
+Navigator.push(context, PageRouteBuilder(pageBuilder: ((context, animation, secondaryAnimation) => UpdateAppliance(type: type,))));
+    
+  }
+
   
-   Column _builButtonLike(Color color, IconData icon, String label,BuildContext context,String like,typeAappliance app) {
+   Column _builButtonLike(Color color, IconData icon, String label,BuildContext context,String like,typeAappliance app,IconData icon2) {
     return Column(
 
       children: [
@@ -120,6 +129,14 @@ Navigator.push(context, PageRouteBuilder(pageBuilder: ((context, animation, seco
 
           },
         ),
+
+         IconButton(
+          icon: const Icon(Icons.upload_outlined),
+          tooltip: 'Modifier Appliance',
+          onPressed:() {
+            _homeupdate(app);
+          }
+         )
    
       ],)
         )
@@ -138,7 +155,7 @@ Navigator.push(context, PageRouteBuilder(pageBuilder: ((context, animation, seco
       padding: const EdgeInsets.all(8),
         child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [_builButtonLike(Colors.pink, Icons.delete, "delete",context,type_appliance.libelle,type_appliance)],
+        children: [_builButtonLike(Colors.pink, Icons.delete, "delete",context,type_appliance.libelle,type_appliance,Icons.update_disabled_outlined)],
       ),
     );
     }
